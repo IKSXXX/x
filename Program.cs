@@ -1,103 +1,112 @@
-﻿using System;
+using System;
+using System.Xml.Schema;
 
-namespace KARABAS
+namespace @namespace
 {
     internal class Program
-    {                                              // Здравствуйте
-        static void Main(string[] args)              // Запустите код
+    {
+        static void N8()  //Дан массив A из 2n элементов. Вычислить A1−A2 + A3−A4 + … +A2n−1 + A2n
         {
-            Console.WriteLine("Для выхода введите 0");
-            string x = "11";
-            while (x != "0")
+            string s = (Console.ReadLine());
+            string[] ss = s.Split(' ');
+            int[] x = new int[ss.Length];
+            int sum = 0;
+            for (int i = 0; i < ss.Length; i++)
             {
-                Console.Write("Введите номер задания:");
-                x = Console.ReadLine();
-                Console.WriteLine();
-                if (x != "0")
+                x[i] = Convert.ToInt32(ss[i]);
+            }
+            for (int j = 0, k = 1; j < ss.Length; j++, k *= -1)
+            {
+                sum += k * x[j];
+            }
+            Console.WriteLine(sum);
+        }
+        static void N1()  //.Организовать ввод элементов массива с клавиатуры. 
+                          // Размер массива также должен задаваться пользователем. 
+                          // Введённый массив вывести на экран.
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            for (int i = 0; i < ss.Length; i++)
+            {
+                Console.Write(ss[i] + " ");
+            }
+        }
+        static void N2()  // Дан массив из n элементов.
+                          // Вывести те элементы, у которых нечётный индекс
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            for (int i = 1; i < ss.Length; i += 2)
+            {
+                Console.Write(ss[i] + " ");
+            }
+        }
+        static void N3()  //3.Дан массив из n чисел.
+                          //Вывести сумму всех элементов массива
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int sum = 0;
+            for (int i = 0; i < ss.Length; i++)
+            {
+                sum += Convert.ToInt32(ss[i]);
+            }
+            Console.WriteLine(sum);
+        }
+        static void N4()  //4.Дан массив из n чисел.
+                          //Вывести произведение всех ненулевых элементов массива
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int sum = 0;
+            for (int i = 0; i < ss.Length; i++)
+            {
+                if (ss[i] != "0")
                 {
-                    Console.WriteLine("Задание " + x);
-                }
-                else break;
-                if (x == "1")
-                {
-                    Console.WriteLine((Convert.ToSingle(Console.ReadLine()) * 1000 / Convert.ToUInt32(Console.ReadLine()) * 60));
-                }
-                else if (x == "2")
-                    Console.WriteLine(Convert.ToInt32(Console.ReadLine() + Console.ReadLine()));
-                else if (x == "3")
-                {
-                    ushort maxu = ushort.MaxValue;
-                    short mins = short.MinValue;
-                    Console.WriteLine("Максимальное значения для переменной типа ushort " + maxu);
-                    Console.WriteLine("Минимальное значение для переменной типа short " + mins);
-                }
-                else if (x == "4")
-                {
-                    var v = 7;
-                    int i = 5;
-                    (i, v) = (v, i);
-                    Console.WriteLine("Неявно " + v);
-                    Console.WriteLine("Явно " + i);
-                }
-                else if (x == "5")
-                {
-                    Console.WriteLine("Task 5");
-
-                    const float p1 = (1.55f);
-                    double p2 = (0.77);
-                    p2 = 2.5;
-                    Console.WriteLine("Нельзя изменить значение константы Float");
-                    Console.WriteLine("Зато можно изменить значение простой переменной типа Double");
-                }
-                else if (x == "6")
-                {
-                    int i = 18;
-                    float f = 16.4f;
-                    double d = 5.7;
-
-                    var summa = ((float)i + f + (float)d);
-                    var proizv = (int)((float)i * f * (float)d);
-                    var proizv2 = (i * (int)f * (int)d);
-                    Console.WriteLine("Пункт 2 - " + summa);
-                    Console.WriteLine("Пункт 3 - " + proizv);
-                    Console.WriteLine("Пункт 4 - " + proizv2);
-                }
-                else if (x == "7")
-                {
-                    int a = 2;
-                    int b = 3;
-                    Console.WriteLine((a + 4 * b) * (a - 3 * b) + 2 * a);
-                }
-                else if (x == "8")
-                {
-                    float c = 1.75f;
-                    float d = 3.25f;
-                    float j = (2 * (c + 1) * 2 + 3 * (d + 1));
-                    Console.WriteLine(j);
-                }
-                else if (x == "9")
-                {
-                    Console.WriteLine("При len = 5:");
-                    const int len = 5;
-                    const int kvadrat = len * len;
-                    const double okr = Math.PI * len * len;
-                    const double proizv = okr * okr;
-                    Console.WriteLine("Площадь квадрвта = " + kvadrat);
-                    Console.WriteLine("Длина окружности = " + okr);
-                    Console.WriteLine("произведение = " + proizv);
-
-                }
-                else if (x == "10")
-                {
-                    string s = "XXX";
-                    const char ch = 'c';
-                    int i = 7;
-                    int n = 10;
-                    string kasha = (s + ch + (i+10));
-                    Console.WriteLine(kasha);
-
+                    if (sum == 0)
+                    {
+                        sum = 1;
+                    }
+                    sum *= Convert.ToInt32(ss[i]);
                 }
             }
+            Console.WriteLine(sum);
+        }
+        static void N5()  //5.Дан массив из n чисел.
+                          //Вывести индекс наибольшего элемента в массиве.
+        {
+
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int max = -1000000000;
+            for (int i = 0; i < ss.Length; i++)
+            {
+                if (max < Convert.ToInt32(ss[i]))
+                {
+                    max = Convert.ToInt32(ss[i]);
+                }
+            }
+            Console.WriteLine(max);
+        }
+        static void Main(string[] args)
+        {
+            string s = "";
+            Console.WriteLine("Для выхода введите 0");
+            while (s != "0")
+            {
+                Console.Write("Введите номер задания для проверки (8, 1, 2, 3, 4, 5) ");
+                s = Console.ReadLine();
+                Console.WriteLine("Задание " + s);
+                if (s == "8") N8();
+                else if (s == "1") N1();
+                else if (s == "2") N2();
+                else if (s == "3") N3();
+                else if (s == "4") N4();
+                else if (s == "5") N5();
+                Console.WriteLine();
+            }
+
         }
     }
 }
